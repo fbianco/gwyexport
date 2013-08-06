@@ -1,0 +1,45 @@
+Information to compile Gwyexport on Windows based systems.
+
+This is only if you want to recomplie the progamm, else you can use the 
+precomplied binaries.
+
+1. Install mingw
+2. Install msys 
+3. Download libgtk http://www.gtk.org/download/win32.php all-in-one bundle
+   Unzip it inside the mingw folder
+4. Unzip gwyddion sources in c:/gwyddion
+5. Start a mingw shell
+	$ cd /c/gwyddion
+	$ ./configure
+	$ make
+6. Take some coffees as it complie it
+   You might got errors, but it can still be ok.
+8. $ make install
+   Ignore Perl errors
+9. Test installation in minigw
+   $ gwyddion.exe
+10. From a Windows command line
+	go in c:/gwyexport
+	start make.bat
+11. Note for international Windows version, you might need to modify the libintl.h
+    Remove/comment the following code:
+	
+	#if !(defined fprintf && defined _GL_STDIO_H) /* don't override gnulib */
+	#undef fprintf
+	#define fprintf libintl_fprintf
+	extern int fprintf (FILE *, const char *, ...);
+	#endif
+	
+12. Copy gwyddion.exe and its librairies in gwyexport folder
+    They are in C:\msys\1.0\local\bin
+13. Copy also
+	C:\msys\1.0\local\share
+	C:\msys\1.0\local\lib
+    inside gwyexport folder
+14. Copy the gtk and glib .dll's inside gwyexport folder
+    You might want to start the gwyexport and copy the dll's one by one following the
+    missig file errors.
+    The dll's are in c:/mingw/bin
+15. Enjoy !
+
+If it does not work... go and install Linux ;-)
